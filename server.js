@@ -165,8 +165,8 @@ const server = http.createServer((request, response) => {
   return serveStatic(request, response);
 });
 
-server.listen(PORT, "127.0.0.1", () => {
-  console.log(`STAV DETAIL запущен: http://127.0.0.1:${PORT}`);
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`STAV DETAIL запущен на порту ${PORT}`);
   if (!process.env.TELEGRAM_BOT_TOKEN || !process.env.TELEGRAM_CHAT_ID) {
     console.log("Форма работает в демо-режиме: заявки выводятся в этот терминал.");
   }
