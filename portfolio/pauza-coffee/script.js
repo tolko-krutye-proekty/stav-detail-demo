@@ -22,7 +22,7 @@ tabs.forEach((tab) => {
     tabs.forEach((item) => {
       const isSelected = item === tab;
       item.classList.toggle("is-active", isSelected);
-      item.setAttribute("aria-selected", String(isSelected));
+      item.setAttribute("aria-pressed", String(isSelected));
     });
 
     menuItems.forEach((item) => {
@@ -32,19 +32,55 @@ tabs.forEach((tab) => {
 });
 
 if (menuToggle && siteNav) {
+  const menuLabel = menuToggle.querySelector(".sr-only");
+
+  const closeMenu = () => {
+    menuToggle.setAttribute("aria-expanded", "false");
+    siteNav.classList.remove("is-open");
+    document.body.classList.remove("menu-open");
+    if (menuLabel) menuLabel.textContent = "Открыть меню";
+  };
+
   menuToggle.addEventListener("click", () => {
     const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
     menuToggle.setAttribute("aria-expanded", String(!isOpen));
     siteNav.classList.toggle("is-open", !isOpen);
     document.body.classList.toggle("menu-open", !isOpen);
+    if (menuLabel) menuLabel.textContent = isOpen ? "Открыть меню" : "Закрыть меню";
+    if (!isOpen) setTimeout(() => siteNav.querySelector("a")?.focus(), 170);
   });
 
   siteNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      menuToggle.setAttribute("aria-expanded", "false");
-      siteNav.classList.remove("is-open");
-      document.body.classList.remove("menu-open");
+      closeMenu();
     });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+
+    if (event.key === "Escape" && isOpen) {
+      closeMenu();
+      menuToggle.focus();
+    }
+
+    if (event.key === "Tab" && isOpen) {
+      const focusable = [...siteNav.querySelectorAll("a"), menuToggle];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  window.matchMedia("(min-width: 761px)").addEventListener("change", (event) => {
+    if (event.matches) closeMenu();
   });
 }
 
@@ -52,11 +88,18 @@ if (openStatus) {
   const now = new Date();
   const day = now.getDay();
   const hour = now.getHours();
-  const weekend = day === 0 || day === 6;
-  const opensAt = weekend ? 9 : 8;
+  const openingHours = [9, 8, 8, 8, 8, 8, 9];
+  const opensAt = openingHours[day];
   const isOpen = hour >= opensAt && hour < 22;
 
-  openStatus.textContent = isOpen ? "Сейчас открыто до 22:00" : `Сейчас закрыто · откроемся в ${opensAt}:00`;
+  if (isOpen) {
+    openStatus.textContent = "Сейчас открыто до 22:00";
+  } else if (hour < opensAt) {
+    openStatus.textContent = `Сейчас закрыто · откроемся сегодня в ${opensAt}:00`;
+  } else {
+    const tomorrowOpensAt = openingHours[(day + 1) % 7];
+    openStatus.textContent = `Сейчас закрыто · откроемся завтра в ${tomorrowOpensAt}:00`;
+  }
   openStatus.parentElement?.classList.toggle("is-closed", !isOpen);
 }
 
