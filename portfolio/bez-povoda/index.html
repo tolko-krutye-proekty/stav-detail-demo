@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2437a8">
+  <meta name="description" content="Демонстрационный сайт цветочной мастерской «Без повода»: букеты для обычных и особенных дней.">
+  <title>Без повода — цветочная мастерская · демо-проект</title>
+  <link rel="preload" href="assets/hero.jpg" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержанию</a>
+
+  <div class="demo-banner" role="note">ДЕМО-ПРОЕКТ ДЛЯ ПОРТФОЛИО <span aria-hidden="true">✳</span> МАСТЕРСКАЯ ВЫМЫШЛЕННАЯ, ЦЕНЫ ПРИМЕРНЫЕ</div>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Без повода — наверх">
+      <span class="brand-mark" aria-hidden="true">✳</span>
+      <span>без повода<span class="brand-dot">.</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-nav">
+      <span></span><span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Основное меню">
+      <a href="#bouquets">Букеты</a>
+      <a href="#about">О мастерской</a>
+      <a href="#how">Как заказать</a>
+      <a class="nav-order" href="#request">Выбрать букет <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Цветочная мастерская · Ставрополь</p>
+        <h1 id="hero-title">Сегодня —<br><em>уже повод.</em></h1>
+        <p class="hero-lead">Цветы для встреч, тёплых слов и тех дней, когда хочется просто сделать красиво.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#bouquets">Посмотреть букеты <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="#request">Опишите свой букет <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="hero-aside">ДЛЯ БОЛЬШИХ МОМЕНТОВ<br>И СОВСЕМ ОБЫЧНЫХ ВТОРНИКОВ</p>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/hero.jpg" alt="Разноцветный букет в кремовой бумаге на синем столе" width="1536" height="1024" fetchpriority="high">
+        <div class="hero-seal" aria-hidden="true">цветы<br>просто<br>так ↗</div>
+        <span class="hero-image-caption">СОБИРАЕМ С НАСТРОЕНИЕМ · ДЕМО</span>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><span>НЕ ЖДИТЕ ПОВОДА ✳ НЕ ЖДИТЕ ПОВОДА ✳ НЕ ЖДИТЕ ПОВОДА ✳ НЕ ЖДИТЕ ПОВОДА ✳</span></div>
+
+    <section class="bouquets section" id="bouquets" aria-labelledby="bouquets-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow dark">Маленькая витрина</p>
+          <h2 id="bouquets-title">Какое сегодня<br><em>настроение?</em></h2>
+        </div>
+        <p class="section-intro">Выберите настроение, а детали букета обсудим вместе. Состав и стоимость ниже показаны для примера.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Фильтр букетов">
+        <button type="button" class="filter is-active" data-filter="all" aria-pressed="true">Все букеты <span>03</span></button>
+        <button type="button" class="filter" data-filter="calm" aria-pressed="false">Нежно</button>
+        <button type="button" class="filter" data-filter="bright" aria-pressed="false">Ярко</button>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card" data-mood="bright">
+          <div class="product-image image-coral"><img src="assets/hero.jpg" alt="Коралловые ранункулюсы, жёлтые и сиреневые цветы" width="1536" height="1024"><span class="product-badge">НАСТРОЕНИЕ: РАДОСТЬ</span></div>
+          <div class="product-info"><div><h3>Тёплый день</h3><p>Цвет, который сразу заметят</p></div><p class="product-price">от 3 200 ₽*</p></div>
+          <button type="button" class="product-action" data-select="Тёплый день">Хочу похожий букет <span aria-hidden="true">↗</span></button>
+        </article>
+        <article class="product-card" data-mood="calm">
+          <div class="product-image image-light"><img src="assets/bouquet-light.jpg" alt="Светлый букет из эустомы и жёлтых тюльпанов" width="1254" height="1254"><span class="product-badge">НАСТРОЕНИЕ: НЕЖНОСТЬ</span></div>
+          <div class="product-info"><div><h3>Тихий разговор</h3><p>Мягкие оттенки, много воздуха</p></div><p class="product-price">от 2 800 ₽*</p></div>
+          <button type="button" class="product-action" data-select="Тихий разговор">Хочу похожий букет <span aria-hidden="true">↗</span></button>
+        </article>
+        <article class="product-card" data-mood="bright">
+          <div class="product-image image-bright"><img src="assets/bouquet-bright.jpg" alt="Яркий букет из бордовых георгинов и коралловых роз" width="1254" height="1254"><span class="product-badge">НАСТРОЕНИЕ: ВАУ</span></div>
+          <div class="product-info"><div><h3>Без слов</h3><p>Когда хочется сделать впечатление</p></div><p class="product-price">от 4 400 ₽*</p></div>
+          <button type="button" class="product-action" data-select="Без слов">Хочу похожий букет <span aria-hidden="true">↗</span></button>
+        </article>
+      </div>
+      <p class="price-note">* Все цены, названия букетов и предложения на этой странице вымышлены для демонстрации дизайна.</p>
+    </section>
+
+    <section class="manifesto" id="about" aria-labelledby="manifesto-title">
+      <div class="manifesto-symbol" aria-hidden="true">✳</div>
+      <div class="manifesto-copy">
+        <p class="eyebrow">Идея мастерской</p>
+        <h2 id="manifesto-title">Хороший букет не ждёт<br><em>красной даты.</em></h2>
+        <p>Он может быть благодарностью, извинением или простой фразой «я о тебе подумал». Поэтому здесь цветы выбирают по чувству, а не по календарю.</p>
+      </div>
+      <p class="manifesto-side">ЦВЕТЫ ГОВОРЯТ<br>ПРОЩЕ СЛОВ</p>
+    </section>
+
+    <section class="how section" id="how" aria-labelledby="how-title">
+      <div class="section-heading">
+        <div><p class="eyebrow dark">Без сложного заказа</p><h2 id="how-title">От идеи<br>до букета</h2></div>
+        <p class="section-intro">На реальном сайте этот сценарий можно подключить к сообщениям в Telegram или другой удобный канал.</p>
+      </div>
+      <div class="steps">
+        <article><span>01</span><h3>Выберите настроение</h3><p>Покажите пример или расскажите, кому предназначены цветы.</p></article>
+        <article><span>02</span><h3>Обсудите детали</h3><p>Размер, оттенки, бюджет и нужную дату можно уточнить до сборки.</p></article>
+        <article><span>03</span><h3>Получите букет</h3><p>На рабочем сайте сюда добавляются реальные условия самовывоза или доставки.</p></article>
+      </div>
+    </section>
+
+    <section class="request" id="request" aria-labelledby="request-title">
+      <div class="request-copy">
+        <p class="eyebrow">Начнём с идеи</p>
+        <h2 id="request-title">Какие цветы<br><em>у вас в голове?</em></h2>
+        <p>Опишите настроение и выберите букет. Эта форма показывает интерфейс заказа: сообщения из неё никуда не отправляются.</p>
+        <span class="request-flower" aria-hidden="true">✳</span>
+      </div>
+      <form class="request-form" id="demo-form" novalidate>
+        <label for="guest-name">Как к вам обращаться</label>
+        <input id="guest-name" name="name" type="text" autocomplete="name" placeholder="Ваше имя" required maxlength="60">
+
+        <label for="bouquet-choice">Какой букет нравится</label>
+        <select id="bouquet-choice" name="bouquet" required>
+          <option value="">Пока не выбрал(а)</option>
+          <option>Тёплый день</option>
+          <option>Тихий разговор</option>
+          <option>Без слов</option>
+          <option>Хочу обсудить свою идею</option>
+        </select>
+
+        <label for="guest-message">Пара слов о вашей идее</label>
+        <textarea id="guest-message" name="message" rows="4" placeholder="Повод, оттенки, пожелания..." maxlength="500"></textarea>
+
+        <button class="button button-dark" type="submit">Проверить заявку <span aria-hidden="true">↗</span></button>
+        <p class="form-caption">Демо-режим: вводимые данные остаются только в вашем браузере и не отправляются.</p>
+        <p class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span><span>без повода<span class="brand-dot">.</span></span></a><p>Демонстрационный проект для портфолио. Не является действующей цветочной мастерской.</p><a href="#top">Наверх ↑</a></footer>
+</body>
+</html>
