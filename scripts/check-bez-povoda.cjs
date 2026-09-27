@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { chromium } = require('playwright');
@@ -7,6 +8,7 @@ const root = path.resolve(__dirname, '..');
 const demoDir = path.join(root, 'portfolio', 'bez-povoda');
 const url = pathToFileURL(path.join(demoDir, 'index.html')).href;
 const names = ['Тёплый день', 'Тихий разговор', 'Без слов'];
+const faviconPath = path.join(demoDir, 'assets', 'favicon.svg');
 
 async function run() {
   const browser = await chromium.launch({
@@ -22,6 +24,9 @@ async function run() {
       page.on('pageerror', error => errors.push(error.message));
       page.on('request', request => requests.push(request.url()));
       await page.goto(url);
+      const favicon = page.locator('link[rel="icon"]');
+      assert.equal(await favicon.getAttribute('href'), 'assets/favicon.svg');
+      assert.equal(fs.existsSync(faviconPath), true, 'Favicon file must exist');
       assert.equal(await page.locator('.bouquet-panel:visible').count(), 1);
       for (let i = 0; i < names.length; i++) {
         await page.getByRole('tab').nth(i).click();

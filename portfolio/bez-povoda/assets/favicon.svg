@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Без повода — цветок</title>
+  <rect width="64" height="64" fill="#2437a8"/>
+  <g fill="#fffdf2">
+    <ellipse cx="32" cy="17" rx="8" ry="13"/>
+    <ellipse cx="46.3" cy="27.4" rx="8" ry="13" transform="rotate(72 46.3 27.4)"/>
+    <ellipse cx="40.8" cy="44.6" rx="8" ry="13" transform="rotate(144 40.8 44.6)"/>
+    <ellipse cx="23.2" cy="44.6" rx="8" ry="13" transform="rotate(216 23.2 44.6)"/>
+    <ellipse cx="17.7" cy="27.4" rx="8" ry="13" transform="rotate(288 17.7 27.4)"/>
+  </g>
+  <circle cx="32" cy="32" r="8.5" fill="#f6e69b"/>
+  <circle cx="32" cy="32" r="3.5" fill="#ff8064"/>
+</svg>
